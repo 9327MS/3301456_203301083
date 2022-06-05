@@ -1,8 +1,8 @@
-// lib/main.dart
-
+import 'package:bitkim/pages/ekran.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 
 class FeedbackDialog extends StatefulWidget {
   const FeedbackDialog({Key? key}) : super(key: key);
@@ -23,6 +23,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
     return AlertDialog(
       content: Form(
         key: _formKey,
@@ -59,8 +60,9 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
                      FirebaseFirestore.instance.collection('feedback');
 
                 await collection.doc().set({
-                  'timestamp': FieldValue.serverTimestamp(),
-                  'feedback': _controller.text,
+                  'tarih': FieldValue.serverTimestamp(),
+                  'görüş': _controller.text,
+                  'gönderen':firebaseUser.email!,
                 });
                 message = 'Geribildirim başarıyla gönderildi. Çok teşekkür ederiz :D ';
               } catch (e) {
@@ -68,7 +70,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
               }
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(message)));
-              Navigator.pop(context);
+              Navigator.push(context,MaterialPageRoute(builder: (context) => ekran()),);
             }
           },
         )

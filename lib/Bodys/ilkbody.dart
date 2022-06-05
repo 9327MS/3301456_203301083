@@ -1,23 +1,22 @@
-import 'package:bitkim/pages/cklist.dart';
 import 'package:bitkim/pages/girisekran%C4%B1.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bitkim/pages/kay%C4%B1t.dart';
-import '../arkaplanlar/ilkarka.dart';
 import 'package:bitkim/kompodent/rounded_button.dart';
-import 'package:bitkim/constants.dart';
-import 'package:bitkim/pages/ekran.dart';
-import 'package:provider/provider.dart';
-import 'package:bitkim/menu_notifier.dart';
+
 class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
-
-    if (firebaseUser != null) {
-      return cklist();
-    }
+    // final firebaseUser = context.watch<User?>();
+    //
+    // if (firebaseUser != null) {
+    //   if(ckin!=null) {
+    //     return ekran();
+    //   }
+    //   else{
+    //     return sehr();
+    //   }
+    // }
     final screenSize = MediaQuery
         .of(context)
         .size;
@@ -40,7 +39,7 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            Text(//ckin,
               'BİTKİM UYGULAMASINA HOŞ GELDİNİZ',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),

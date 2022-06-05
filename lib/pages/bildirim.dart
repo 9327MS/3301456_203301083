@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
 
-class bildirim extends StatefulWidget {
+  class bildirim extends StatefulWidget {
   const bildirim({Key? key}) : super(key: key);
 
   @override

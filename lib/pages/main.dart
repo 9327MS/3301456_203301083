@@ -1,19 +1,13 @@
-import 'package:bitkim/constants.dart';
 import 'package:bitkim/firebase_options.dart';
 import 'package:bitkim/menu_notifier.dart';
 import 'package:bitkim/pages/ilk.dart';
 import 'package:bitkim/services/auth.dart';
-import 'package:bitkim/services/domainfirms_provider.dart';
-import 'package:bitkim/services/firestore_domainfirms_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:bitkim/pages/girisekran%C4%B1.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:bitkim/firebase_options.dart';
 import 'package:bitkim/pages/kay%C4%B1t.dart';
-import 'package:bitkim/services/geribildirim.dart';
-import 'package:async/async.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,15 +29,6 @@ class MyApp extends StatelessWidget {
           StreamProvider(
             create: (context) =>
             context.read<FlutterFireAuthService>().authStateChanges,
-            initialData: null,
-          ),
-          Provider<FirestoreDomainFirmsService>(
-            create: (_) => FirestoreDomainFirmsService(),
-          ),
-          ChangeNotifierProvider(create: (context) => DomainFirmsProvider()),
-          StreamProvider(
-            create: (context) =>
-                context.read<FirestoreDomainFirmsService>().getDomainFirms(),
             initialData: null,
           ),
           ChangeNotifierProvider(create: (context) => MenuDrawerNotifier()),

@@ -1,14 +1,16 @@
+import 'package:bitkim/pages/arakaynak.dart';
 import 'package:bitkim/pages/ekran.dart';
 import 'package:flutter/material.dart';
-import 'package:bitkim/pages/cklist.dart';
-import '../pages/cklist.dart';
+
 class reisim extends StatefulWidget {
   const reisim({Key? key}) : super(key: key);
 
   @override
   State<reisim> createState() => _reisimState();
 }
-
+List<String>
+ckism = ['Ametist','Papatya''Gül','Zambak','Lale','Nergis','Orkide','Barış'],
+ckresim =['assets/images/amtes.jpg','assets/images/papatya.png','assets/images/gül.jpg','assets/images/zambak.jpg','assets/images/lale.jpg','assets/images/nergis.jpg','assets/images/orkide.jpg','assets/images/barıs.jpg'];
 class _reisimState extends State<reisim> {
   @override
   Widget build(BuildContext context) {
@@ -20,13 +22,13 @@ class _reisimState extends State<reisim> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           titleTextStyle: TextStyle(fontSize: 30, color: Colors.white,fontWeight: FontWeight.bold),
-    title: Text(cicek),
+    title: Text(ckism[int.parse(ckin)]),
     ),        body: Container(
     width: screenSize.width,
     height: screenSize.height,
     decoration: BoxDecoration(
     image:  DecorationImage(
-    image: AssetImage(resim),
+    image: AssetImage(ckresim[int.parse(ckin)]),
     fit: BoxFit.cover,
     ),
     ),

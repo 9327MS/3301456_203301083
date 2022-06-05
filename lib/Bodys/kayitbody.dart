@@ -3,9 +3,9 @@ import 'package:bitkim/kompodent/rounded_input_field.dart';
 import 'package:bitkim/kompodent/rounded_password_field.dart';
 import 'package:bitkim/kompodent/zatenvar.dart';
 import 'package:bitkim/pages/girisekran%C4%B1.dart';
-import 'package:bitkim/arkaplanlar/ilkarka.dart';
 import 'package:bitkim/services/auth.dart';
-import 'package:bitkim/services/cikisdialog.dart';
+import 'package:bitkim/services/uyaridiyalog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -49,12 +49,6 @@ class Body extends StatelessWidget {
               color: Colors.green,
             ),
             RoundedInputField(
-              hintText: "Adınız",
-              onChanged: (value) {
-                user_name = value;
-              },
-            ),
-            RoundedInputField(
               hintText: "Mail adresiniz",
               onChanged: (value) {
                 user_email = value;
@@ -73,6 +67,12 @@ class Body extends StatelessWidget {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => giris()));
                   cikis("Tebrikler", "Kayıt oldunuz şimdi lütfen giriş yapınız!", context);
+                  final collection =
+                  FirebaseFirestore.instance.collection('kullanicicicek');
+                  await collection.doc(user_email).set({
+                    'sehir': "",
+                    'bitki': "",
+                  });
                 }),
             SizedBox(height: 50),
             AlreadyHaveAnAccountCheck(

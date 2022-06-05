@@ -1,18 +1,18 @@
 class DomainFirms {
-  final String? gorus;
-  final String? iletisim;
+  final String? bitki;
+  final String? sehirim;
 
   DomainFirms(
-      {this.gorus, this.iletisim,});
+      {this.bitki, this.sehirim,});
 
   Map<String, dynamic> toMap() {
     return {
-      'görüş': gorus,
-      'iletişim adresi': iletisim,
+      'bitkim': bitki,
+      'sehir': sehirim,
     };
   }
 
   DomainFirms.fromFirestore(Map<String, dynamic> firestore)
-      : gorus = firestore['geribildirim'],
-        iletisim = firestore['mailadresi'];
+      : bitki = firestore['bitkim'],
+        sehirim = firestore['sehir'];
 }

@@ -1,15 +1,14 @@
-import 'package:bitkim/pages/cklist.dart';
-import 'package:bitkim/pages/ekran.dart';
-import 'package:bitkim/pages/girisekran%C4%B1.dart';
+import 'package:bitkim/pages/arakaynak.dart';
+import 'package:bitkim/pages/ilk.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'cikisdialog.dart';
+import 'uyaridiyalog.dart';
 import 'dart:async';
+
 
 class FlutterFireAuthService {
   final FirebaseAuth _firebaseAuth;
-
   FlutterFireAuthService(this._firebaseAuth);
 
   Stream<User?> get authStateChanges => _firebaseAuth.idTokenChanges();
@@ -51,27 +50,10 @@ class FlutterFireAuthService {
           .user;
 
       if (user != null) {
-        if(ckin != null)
-        {Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return ekran();
-            },
-          ),
-        );}
-        else {
-          {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return cklist();
-                },
-              ),
-            );
-          }
-        }
+        Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) =>
+            arakaynak()),
+        );
         return user;
       } else {
         cikis("HATA!", "Giriş yapılamadı", context);
@@ -87,7 +69,7 @@ class FlutterFireAuthService {
     try {
       await _firebaseAuth.signOut().then((value) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => giris()));
+            context, MaterialPageRoute(builder: (_) => WelcomeScreen()));
       });
       cikis("Hoşçakal", "Yine bekleriz!", context);
     } catch (e) {
