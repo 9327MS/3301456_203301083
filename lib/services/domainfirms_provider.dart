@@ -1,54 +1,48 @@
 import 'package:bitkim/model/domain_firms.dart';
 import 'package:bitkim/services/firestore_domainfirms_service.dart';
 import 'package:flutter/material.dart';
+import 'package:bitkim/model/domain_firms.dart';
 import 'package:uuid/uuid.dart';
 
 
 class DomainFirmsProvider with ChangeNotifier {
 
   final firestoreService = FirestoreDomainFirmsService();
-  String? _gorus;
-  String? _iletisim;
+  String? _id;
+  String? _name;
+  String? _loginname;
+  String? _loginpassword;
+  String? _web;
 
   var uuid = Uuid();
 
-  String? get gorus => _gorus;
+  String? get id => _id;
 
-  String? get iletisim => _iletisim;
+  String? get name => _name;
 
-  changegorus(String value) {
-    _gorus = value;
+  String? get loginname => _loginname;
+
+  String? get loginpassword => _loginpassword;
+
+  String? get web => _web;
+
+  changeName(String value) {
+    _name = value;
     notifyListeners();
   }
 
-  changeiletisim(String value) {
-    _iletisim = value;
+  changeLoginName(String value) {
+    _loginname = value;
     notifyListeners();
   }
 
-  loadValues(DomainFirms domainfirm) {
-    _gorus = domainfirm.gorus;
-    _iletisim = domainfirm.iletisim;
+  changeLoginPassword(String value) {
+    _loginpassword = value;
+    notifyListeners();
   }
 
-  saveDomainFirm() {
-    if (_gorus == null) {
-      var newDomainFirm = DomainFirms(
-          gorus: uuid.v4(),
-          iletisim: iletisim,
-          );
-      firestoreService.saveDomainFirm(newDomainFirm);
-    } else {
-      //Update
-      var updatedDomainFirm = DomainFirms(
-          gorus:gorus,
-          iletisim: iletisim,
-         );
-      firestoreService.saveDomainFirm(updatedDomainFirm);
-    }
-  }
-
-  removeDomainFirm(String id) {
-    firestoreService.removeDomainFirm(id);
+  changeWeb(String value) {
+    _web = value;
+    notifyListeners();
   }
 }

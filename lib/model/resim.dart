@@ -1,7 +1,7 @@
 import 'package:bitkim/pages/ekran.dart';
 import 'package:flutter/material.dart';
 import 'package:bitkim/pages/cklist.dart';
-import 'pages/cklist.dart';
+import '../pages/cklist.dart';
 class reisim extends StatefulWidget {
   const reisim({Key? key}) : super(key: key);
 

@@ -5,6 +5,7 @@ import 'package:bitkim/kompodent/zatenvar.dart';
 import 'package:bitkim/pages/girisekran%C4%B1.dart';
 import 'package:bitkim/arkaplanlar/ilkarka.dart';
 import 'package:bitkim/services/auth.dart';
+import 'package:bitkim/services/cikisdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,14 +37,16 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 30),
             Text(
               "KAYIT OL",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
             ),
             SizedBox(height: 50),
-            Image.asset(
-              "assets/images/ciceklogo.png",
-              height: 50,
+            Icon(
+              Icons.spa_outlined,
+              size: 180,
+              color: Colors.green,
             ),
             RoundedInputField(
               hintText: "Adınız",
@@ -64,10 +67,12 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
                 text: "KAYIT OL",
-                press: () {
-                  context
-                      .read<FlutterFireAuthService>()
+                press: () async{
+                  context.read<FlutterFireAuthService>()
                       .createAccount(user_name, user_email, user_password);
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => giris()));
+                  cikis("Tebrikler", "Kayıt oldunuz şimdi lütfen giriş yapınız!", context);
                 }),
             SizedBox(height: 50),
             AlreadyHaveAnAccountCheck(
@@ -83,6 +88,7 @@ class Body extends StatelessWidget {
                 );
               },
             ),
+            SizedBox(height: 50),
           ],
         ),
       ),

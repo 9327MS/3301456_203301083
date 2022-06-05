@@ -1,13 +1,15 @@
 import 'package:bitkim/pages/bildirim.dart';
+import 'package:bitkim/services/geribildirim.dart';
 import 'package:bitkim/pages/hakk%C4%B1nda.dart';
 import 'package:bitkim/pages/hakk%C4%B1nda.dart';
-import 'package:bitkim/resim.dart';
+import 'package:bitkim/model/resim.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'cklist.dart';
 import 'package:bitkim/pages/cklist.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bitkim/services/auth.dart';
 import 'package:bitkim/services/auth.dart';
 
 class ekran extends StatefulWidget {
@@ -60,9 +62,11 @@ class _ekranState extends State<ekran> {
   ];
   @override
   Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
     final screenSize = MediaQuery
         .of(context)
         .size;
+
     return Scaffold(
         appBar: AppBar(
         leadingWidth: 130,
@@ -89,11 +93,9 @@ class _ekranState extends State<ekran> {
     bottomNavigationBar: BottomAppBar(
       color: Colors.green,
     child: Row(
-    mainAxisAlignment: MainAxisAlignment.start,
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-    Text('Hoşgeldiniz  '),
-      Text(isims),
-      SizedBox(width: 250),
+     Text('Hoşgeldiniz   ' + firebaseUser.email!),
       IconButton(
         icon: Icon(Icons.exit_to_app_outlined),
         tooltip: 'Çıkış yap',
@@ -140,6 +142,9 @@ class _ekranState extends State<ekran> {
                      color: Colors.white,
                      tooltip: 'Geri bildirim',
                      onPressed: () {
+                       showDialog(
+                           context: context, builder:
+                           (context) => const FeedbackDialog());
                      },
                    ),
                  ],

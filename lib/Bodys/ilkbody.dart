@@ -2,7 +2,6 @@ import 'package:bitkim/pages/cklist.dart';
 import 'package:bitkim/pages/girisekran%C4%B1.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:bitkim/giris.dart';
 import 'package:bitkim/pages/kay%C4%B1t.dart';
 import '../arkaplanlar/ilkarka.dart';
 import 'package:bitkim/kompodent/rounded_button.dart';
@@ -42,10 +41,14 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Bitkime HOŞ GELDİNİZ',
+              'BİTKİM UYGULAMASINA HOŞ GELDİNİZ',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text('BİTKİM'),
+            Icon(
+              Icons.meeting_room,
+              color: Colors.orangeAccent,
+              size: 40,
+            ),
             SizedBox(height: 50),
             Icon(
               Icons.grass,

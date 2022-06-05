@@ -12,14 +12,15 @@ import 'package:bitkim/pages/girisekran%C4%B1.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:bitkim/firebase_options.dart';
 import 'package:bitkim/pages/kay%C4%B1t.dart';
-import 'package:bitkim/pages/geribildirim.dart';
+import 'package:bitkim/services/geribildirim.dart';
 import 'package:async/async.dart';
-void main() async {
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp( MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

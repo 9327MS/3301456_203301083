@@ -1,7 +1,5 @@
-import 'package:bitkim/main.dart';
 import 'package:bitkim/pages/ekran.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 var ckin;
 var ikon;
 var cicek;
@@ -78,15 +76,12 @@ class _cklistState extends State<cklist> {
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-
-                    RaisedButton(
-                        highlightColor: Colors.white,
-                        elevation: 10,
+                    ElevatedButton(
                         onPressed: () {
                           cicek = 'Ametist';
                           ckin =  0;
                           resim = 'assets/images/amtes.jpg';
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ekran(
@@ -94,11 +89,8 @@ class _cklistState extends State<cklist> {
                             ),
                           );
                         },
-                        child: Text("Ametist"),
-                        textColor: Colors.green),
-                    RaisedButton(
-                        highlightColor: Colors.white,
-                        elevation: 10,
+                        child: Text("Ametist"),),
+                        ElevatedButton(
                         onPressed: () {
                           cicek = 'Papatya';
                           ckin =  1;
@@ -107,35 +99,29 @@ class _cklistState extends State<cklist> {
                               context, MaterialPageRoute(builder: (context) => ekran(
                           ),));
                         },
-                        child: Text("Papatya"),
-                        textColor: Colors.green),
-                    RaisedButton(
-                        highlightColor: Colors.white,
-                        elevation: 10,
+                        child: Text("Papatya"),),
+                    ElevatedButton(
                         onPressed: () {
                           cicek = 'Gül';
                           ckin =  2;
                           resim = 'assets/images/gül.jpg';
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context, MaterialPageRoute(builder: (context) => ekran(
                           ),));
                         },
-                        child: Text("Gül"),
-                        textColor: Colors.green),
-                    RaisedButton(
-                        highlightColor: Colors.white,
-                        elevation: 10,
+                        child: Text("Gül"),),
+                    ElevatedButton(
                         onPressed: () {
                           cicek = 'Zambak';
                           ckin =  3;
                           resim = 'assets/images/zambak.jpg';
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context, MaterialPageRoute(builder: (context) => ekran(
 
                           ),));
                         },
                         child: Text("Zambak"),
-                        textColor: Colors.green),
+                    ),
                     ]
                     ),
                     SizedBox(
@@ -144,10 +130,9 @@ class _cklistState extends State<cklist> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                   RaisedButton(
+                          ElevatedButton(
 
-                    highlightColor: Colors.white,
-                    elevation: 10,
+
                     onPressed: () {
                       cicek = 'Lale';
                       ckin =  4;
@@ -157,54 +142,48 @@ class _cklistState extends State<cklist> {
 
                       ),));
                     },
-                    child: Text('Lale'),
-                    textColor: Colors.green),
-                   RaisedButton(
-                    highlightColor: Colors.white,
-                    elevation: 10,
+                    child: Text('Lale')
+                    ),
+                          ElevatedButton(
                     onPressed: () {
                       cicek = 'Nergis';
                       ckin =  5;
                       resim = 'assets/images/nergis.jpg';
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context, MaterialPageRoute(
                         builder: (context) => ekran(
                         ),
                       ),
                       );
                     },
-                    child: Text("Nergis"),
-                    textColor: Colors.green),
-                   RaisedButton(
-                    highlightColor: Colors.white,
-                    elevation: 10,
+                    child: Text("Nergis"),),
+                          ElevatedButton(
                     onPressed: () {
                       cicek = 'Orkide';
                       ckin =  6;
                       resim = 'assets/images/orkide.jpg';
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context, MaterialPageRoute(builder: (context) => ekran(
                       ),
                       ),
                       );
                     },
                     child: Text("Orkide"),
-                    textColor: Colors.green),
-                   RaisedButton(
-                    highlightColor: Colors.white,
-                    elevation: 10,
+                    ),
+                          ElevatedButton(
+
                     onPressed: () {
                       cicek = 'Barış çiçeği';
                       ckin =  7;
                       resim = 'assets/images/barıs.jpg';
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context, MaterialPageRoute(builder: (context) => ekran(
                       ),
                       )
                       );
                     },
                     child: Text("Barış"),
-                    textColor: Colors.green),
+                    ),
               ],
             ),
         ],

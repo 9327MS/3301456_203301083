@@ -23,7 +23,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -62,15 +65,5 @@ class DefaultFirebaseOptions {
     messagingSenderId: '160287224671',
     projectId: 'bitkim-f70ae',
     storageBucket: 'bitkim-f70ae.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDRIsZyJ5BtMI0DVp9nGXBAVSEWI9j8vbE',
-    appId: '1:160287224671:ios:226d4a26bc3a0a4a57fcea',
-    messagingSenderId: '160287224671',
-    projectId: 'bitkim-f70ae',
-    storageBucket: 'bitkim-f70ae.appspot.com',
-    iosClientId: '160287224671-3et55f3vm2noa1rp08v5tomq92utvcjf.apps.googleusercontent.com',
-    iosBundleId: 'com.example.bitkim',
   );
 }

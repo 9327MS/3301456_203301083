@@ -52,7 +52,7 @@ class FlutterFireAuthService {
 
       if (user != null) {
         if(ckin != null)
-        {Navigator.push(
+        {Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) {
@@ -62,7 +62,7 @@ class FlutterFireAuthService {
         );}
         else {
           {
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) {
@@ -78,14 +78,15 @@ class FlutterFireAuthService {
         return user;
       }
     } catch (e) {
-      cikis("Hata!", e.toString(), context);
+      //e.toString()
+      cikis("Hata!", 'Hatalı giriş, lütfen şifrenizi ve mail adresininiz doğru girdiğinizden emin olun', context);
       return null;
     }
   }
   Future<void> logOut(BuildContext context) async {
     try {
       await _firebaseAuth.signOut().then((value) {
-        Navigator.push(
+        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => giris()));
       });
       cikis("Hoşçakal", "Yine bekleriz!", context);
