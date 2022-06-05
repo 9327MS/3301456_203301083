@@ -36,13 +36,13 @@ class Body extends StatelessWidget {
           children: <Widget>[
             Text(
               "Giriş",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
             ),
             SizedBox(height: 50),
-            ImageIcon(
-              AssetImage("assets/images/ciceklogo.png"),
+            Icon(
+              Icons.spa_outlined,
               size: 250,
-              color: Color(0xFF3A5A98),
+              color: Colors.green,
             ),
             SizedBox(height: 10),
             RoundedInputField(

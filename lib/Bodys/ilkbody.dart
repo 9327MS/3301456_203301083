@@ -42,10 +42,14 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Bitkime HOŞ GELDİNİZ',
+              'BİTKİM UYGULAMASINA HOŞ GELDİNİZ',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text('BİTKİM'),
+            Icon(
+              Icons.meeting_room,
+              color: Colors.orangeAccent,
+              size: 40,
+            ),
             SizedBox(height: 50),
             Icon(
               Icons.grass,

@@ -1,7 +1,5 @@
-import 'package:bitkim/main.dart';
 import 'package:bitkim/pages/ekran.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 var ckin;
 var ikon;
 var cicek;
@@ -86,7 +84,7 @@ class _cklistState extends State<cklist> {
                           cicek = 'Ametist';
                           ckin =  0;
                           resim = 'assets/images/amtes.jpg';
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ekran(
@@ -116,7 +114,7 @@ class _cklistState extends State<cklist> {
                           cicek = 'Gül';
                           ckin =  2;
                           resim = 'assets/images/gül.jpg';
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context, MaterialPageRoute(builder: (context) => ekran(
                           ),));
                         },
@@ -129,7 +127,7 @@ class _cklistState extends State<cklist> {
                           cicek = 'Zambak';
                           ckin =  3;
                           resim = 'assets/images/zambak.jpg';
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context, MaterialPageRoute(builder: (context) => ekran(
 
                           ),));
@@ -166,7 +164,7 @@ class _cklistState extends State<cklist> {
                       cicek = 'Nergis';
                       ckin =  5;
                       resim = 'assets/images/nergis.jpg';
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context, MaterialPageRoute(
                         builder: (context) => ekran(
                         ),
@@ -182,7 +180,7 @@ class _cklistState extends State<cklist> {
                       cicek = 'Orkide';
                       ckin =  6;
                       resim = 'assets/images/orkide.jpg';
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context, MaterialPageRoute(builder: (context) => ekran(
                       ),
                       ),
@@ -197,7 +195,7 @@ class _cklistState extends State<cklist> {
                       cicek = 'Barış çiçeği';
                       ckin =  7;
                       resim = 'assets/images/barıs.jpg';
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context, MaterialPageRoute(builder: (context) => ekran(
                       ),
                       )

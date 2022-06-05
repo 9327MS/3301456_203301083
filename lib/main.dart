@@ -14,12 +14,13 @@ import 'package:bitkim/firebase_options.dart';
 import 'package:bitkim/pages/kay%C4%B1t.dart';
 import 'package:bitkim/pages/geribildirim.dart';
 import 'package:async/async.dart';
-void main() async {
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp( MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
