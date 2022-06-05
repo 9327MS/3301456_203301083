@@ -1,9 +1,14 @@
-import 'package:bitkim/bildirim.dart';
-import 'package:bitkim/hakk%C4%B1nda.dart';
-import 'package:bitkim/hakkında.dart';
+import 'package:bitkim/pages/bildirim.dart';
+import 'package:bitkim/pages/hakk%C4%B1nda.dart';
+import 'package:bitkim/pages/hakk%C4%B1nda.dart';
+import 'package:bitkim/resim.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'cklist.dart';
-import 'package:bitkim/cklist.dart';
+import 'package:bitkim/pages/cklist.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bitkim/services/auth.dart';
 
 class ekran extends StatefulWidget {
   ekran({Key? key});
@@ -42,6 +47,16 @@ class _ekranState extends State<ekran> {
   'Mevsimlik çiçekler olduklarından toprak ve saksı değişimine ihtiyaç duyulmaz.Çok geniş olmayan bir saksı seçimiyle başlamak gerekir. Doğal gübreli, vitamin ve mineral oranı yüksek topraklar nergisler için uygundur. Nergisin büyüdüğü saksıyı yarı gölgeli ortamda bulundurmalısınız. Güneş ışığını şiddetli şekilde almamalıdır.',
   'Orkide, güneş ışığını doğrudan almayı sevmez. Bu nedenle kendisini aydınlık ama doğrudan güneş ışığının gelmediği bir noktada konumlandırmanız gerekmektedir. Orkide saksısının şeffaf ve küçük olmasına özen göstermelidir. Saksıda drenaj deliklerinin bulunduğundan emin olun. Orkideye özel satılan toprak ve gübre tercih edilmelidir. Orkidenizin yerini sık sık değiştirmemeye özen gösterin. Oda sıcaklığının 15 ila 25 derece arasında olmasına da özen göstermeniz yararlı olacaktır.',
   'Barış çiçeği her ortama oldukça kolay bir şekilde uyum sağlayabilen bir çiçektir. Gölge ve yarı gölge alanlardan hoşlanır. Direkt güneş ışığını sevmez. Toprağı torf ve lif bakımından zengin olmalıdır böyle çok daha verimli bir şekilde yetişir. Kendisi için en uygun sıcaklık aralığı ise 10 ila 28 derece arasında değişen sıcaklıklardır. Barış çiçeği yer değiştirmeyi çok sevmez, bu nedenle yaklaşık 2-3 yılda bir saksısını değiştirmeniz bile yeterli olacaktır.',
+  ],
+  ckek = [
+    'https://www.ciceksu.com/cicek-turleri/ametist-cicegi-browallia.html',
+    'https://www.yasemin.com/pratik-bilgiler/haber/2849157-papatya-nasil-yetistirilir-saksida-papatya-bakimi-papatya-cicegi-ozellikleri-ve-faydalari?ysclid=l3ymhzoyrj',
+    'https://www.bitkibakimi.com/cicek/286-gul-bitkisi-bakimi-ve-yetistirilmesi-hakkinda-genel-bilgiler.aspx',
+    'https://www.bitkibakimi.com/cicek/287-zambak-bitkisi-bakimi-ve-yetistirilmesi-hakkinda-genel-bilgiler.aspx',
+    'https://www.bitkibakimi.com/cicek/288-lale-bitkisi-bakimi-ve-yetistirilmesi-hakkinda-genel-bilgiler.aspx',
+    'https://www.evimdergisi.com.tr/nergis-cicegi-bakimi-sulamasi-ve-cogaltmasi-nasil-yapilir-anlami-nedir/',
+    'https://www.evimdergisi.com.tr/orkide-bakimi-nasil-yapilir-evde-orkide-nasil-cogaltilir/',
+    'https://www.evimdergisi.com.tr/baris-cicegi-bakimi-nasil-olmali-spat-cicegi-spatifilyum-ozellikleri/',
   ];
   @override
   Widget build(BuildContext context) {
@@ -78,6 +93,15 @@ class _ekranState extends State<ekran> {
     children: [
     Text('Hoşgeldiniz  '),
       Text(isims),
+      SizedBox(width: 250),
+      IconButton(
+        icon: Icon(Icons.exit_to_app_outlined),
+        tooltip: 'Çıkış yap',
+        onPressed: ()
+        {
+      context.read<FlutterFireAuthService>().logOut(context);
+     },
+    )
     ],
     ),
     ),
@@ -94,7 +118,8 @@ class _ekranState extends State<ekran> {
               shape: BoxShape.rectangle,
           ),
           alignment: Alignment.topCenter,
-           child: SingleChildScrollView(
+           child: GestureDetector(
+               child: new SingleChildScrollView(
           child: Column(
            mainAxisAlignment: MainAxisAlignment.start,
            children: <Widget>[
@@ -138,6 +163,11 @@ class _ekranState extends State<ekran> {
                    width: 2.5,
                  ),
                  borderRadius: BorderRadius.circular(8),
+               ),
+               child: new GestureDetector(
+                   onDoubleTap: () { Navigator.pushReplacement(context,
+                       MaterialPageRoute(builder: (context) => reisim() ));
+                   }
                ),
              ),
              SizedBox(height: 5,),
@@ -223,11 +253,37 @@ class _ekranState extends State<ekran> {
                        ),
                      ]
                  )
-
              ),
+             SizedBox(height: 5,),
+             Container(
+               padding: EdgeInsets.only(left: 10,right: 7,top:4,bottom: 10),
+               width: 350,
+               decoration: BoxDecoration(
+                 color: Colors.tealAccent,
+                 border: Border.all(
+                   color: Colors.white,
+                   width: 3,
+                 ),
+                 borderRadius: BorderRadius.circular(10),
+               ),
+               child: GestureDetector(
+                   child: new  Text('Daha fazlası için tıklayın',style: TextStyle(
+                       fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),),
+                   onTap: ()  => launch(ckek[ckin])
+               ),
+             ),
+             SizedBox(height: 10,),
           ],
              ),
          ),
+             onVerticalDragUpdate: (details) {},
+             onHorizontalDragUpdate: (details) {
+               if (details.delta.direction > 0) {
+               }
+               else{Navigator.of(context).push(MaterialPageRoute(builder: (context) => cklist()));}
+             },
+
+    ),
     ),
     );
     }

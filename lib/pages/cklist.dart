@@ -1,5 +1,5 @@
 import 'package:bitkim/main.dart';
-import 'package:bitkim/ekran.dart';
+import 'package:bitkim/pages/ekran.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 var ckin;
