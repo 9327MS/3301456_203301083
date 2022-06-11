@@ -62,18 +62,25 @@ class Body extends StatelessWidget {
             RoundedButton(
                 text: "KAYIT OL",
                 press: () async{
-                  context.read<FlutterFireAuthService>()
-                      .createAccount(user_name, user_email, user_password);
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => giris()));
-                  cikis("Tebrikler", "Kayıt oldunuz şimdi lütfen giriş yapınız!", context);
-                  final collection =
-                  FirebaseFirestore.instance.collection('kullanicicicek');
-                  await collection.doc(user_email).set({
-                    'sehir': "",
-                    'bitki': "",
-                  });
-                }),
+                  if(user_password.length<=5) {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text('şifreniz en az 6 karakter olmalı')));
+                  }
+                  else{
+                    context.read<FlutterFireAuthService>()
+                        .createAccount(user_name, user_email, user_password);
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => giris()));
+                    cikis("Tebrikler", "Kayıt oldunuz şimdi lütfen giriş yapınız!", context);
+                    final collection =
+                    FirebaseFirestore.instance.collection('kullanicicicek');
+                    await collection.doc(user_email).set({
+                      'sehir': "",
+                      'bitki': "",
+                    });
+                  }
+                }
+                ),
             SizedBox(height: 50),
             AlreadyHaveAnAccountCheck(
               login: false,
