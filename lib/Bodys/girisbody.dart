@@ -5,9 +5,8 @@ import 'package:bitkim/kompodent/zatenvar.dart';
 import 'package:bitkim/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+String user_email = "";
 class Body extends StatelessWidget {
-  String user_email = "";
   String user_password = "";
 
   @override

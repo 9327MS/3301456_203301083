@@ -6,6 +6,7 @@ import 'package:bitkim/pages/girisekran%C4%B1.dart';
 import 'package:bitkim/services/auth.dart';
 import 'package:bitkim/services/uyaridiyalog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -64,9 +65,14 @@ class Body extends StatelessWidget {
                 press: () async{
                   if(user_password.length<=5) {
                     ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text('şifreniz en az 6 karakter olmalı')));
+                        .showSnackBar(SnackBar(content: Text('Şifreniz en az 6 karakter olmalı')));
                   }
                   else{
+                    if(!EmailValidator.validate(user_email)){
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text('Lütfen geçerli bir mail adesi giriniz...')));
+                    }
+                    else{
                     context.read<FlutterFireAuthService>()
                         .createAccount(user_name, user_email, user_password);
                     Navigator.push(
@@ -78,6 +84,7 @@ class Body extends StatelessWidget {
                       'sehir': "",
                       'bitki': "",
                     });
+                    }
                   }
                 }
                 ),

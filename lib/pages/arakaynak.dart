@@ -1,3 +1,4 @@
+import 'package:bitkim/Bodys/girisbody.dart';
 import 'package:bitkim/kompodent/rounded_button.dart';
 import 'package:bitkim/pages/cklistnew.dart';
 import 'package:bitkim/pages/ekran.dart';
@@ -16,8 +17,7 @@ CollectionReference moviesRef=_firestore.collection('kullanicicicek');
 class arakaynak extends StatelessWidget {
   @override
   Widget build(BuildContext context)  {
-    final firebaseUser = context.watch<User>();
-    var babaRef = moviesRef.doc(firebaseUser.email);
+    var babaRef = moviesRef.doc(user_email);
     final screenSize = MediaQuery
         .of(context)
         .size;
