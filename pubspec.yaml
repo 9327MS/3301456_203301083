@@ -42,7 +42,6 @@ dependencies:
   provider: ^6.0.3
   uuid: ^3.0.6
   http: ^0.13.4
-  location: ^4.4.0
   dropdown_button2: ^1.5.3
 
 
@@ -81,6 +80,8 @@ flutter:
     - assets/images/orkide.jpg
     - assets/matthias-schroder-KoBCaTPydqs-unsplash.jpg
     - assets/ivan-skorovarov-qvFtW-FsUa0-unsplash.jpg
+    - assets/wallpaperflare.jpg
+    - assets/wallpaperflare.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
