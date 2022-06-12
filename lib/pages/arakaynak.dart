@@ -1,4 +1,3 @@
-import 'package:async/async.dart';
 import 'package:bitkim/Bodys/girisbody.dart';
 import 'package:bitkim/kompodent/rounded_button.dart';
 import 'package:bitkim/pages/cklistnew.dart';
@@ -7,8 +6,6 @@ import 'package:bitkim/pages/sehrdenem.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
-import 'dart:async';
 
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 var ckin;
@@ -34,81 +31,82 @@ class arakaynak extends StatelessWidget {
         ),
       ),
       body: StreamBuilder<DocumentSnapshot>(
-        stream: bilgihesap.snapshots(),
-        builder: (Buildcontext, AsyncSnapshot asyncSnapshot) {
-          sehiri = '${asyncSnapshot.data.data()['sehir']}';
-          ckin = '${asyncSnapshot.data.data()['bitki']}';
-          if (MethodCall==null){
-            return  new Scaffold(
-              backgroundColor: Colors.transparent,
-              body: Center(
-                child:
-                LoadingAnimationWidget.twistingDots(
-                  leftDotColor: const Color(0xFF1A1A3F),
-                  rightDotColor: const Color(0xFFEA3799),
-                  size: 165,),
-              ),
-            );
-          }
-          else {
-            return Container(
-              width: screenSize.width,
-              height: screenSize.height,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                      'assets/wallpaperflare.jpg'
+            stream: bilgihesap.snapshots(),
+            builder: (Buildcontext, AsyncSnapshot asyncSnapshot) {
+              if (!asyncSnapshot.hasData)
+              {
+                return  new Scaffold(
+                  backgroundColor: Colors.transparent,
+                  body: Center(
+                    child:
+                    LoadingAnimationWidget.twistingDots(
+                      leftDotColor: const Color(0xFF1A1A3F),
+                      rightDotColor: const Color(0xFFEA3799),
+                      size: 165,),
                   ),
-                  fit: BoxFit.fill,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                );
+              }
+              else {
+              sehiri = '${asyncSnapshot.data.data()['sehir']}';
+              ckin = '${asyncSnapshot.data.data()['bitki']}';
+                return Container(
+                  width: screenSize.width,
+                  height: screenSize.height,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'assets/wallpaperflare.jpg'
+                      ),
+                      fit: BoxFit.fill,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
 
-                  Text('Hoşgeldiniz',
-                      style: TextStyle(fontSize: 50,color: Colors.white,),),
-                  SizedBox(height: 50,),
-                  RoundedButton(
-                    text: "Hoşbuldum...",
-                    press: () {
-                      if (ckin.isNotEmpty) {
-                        if (sehiri.isNotEmpty) {
-                          Navigator.pushReplacement(
-                            context, MaterialPageRoute(builder: (context) =>
-                              ekran()),
-                          );
-                        }
-                        else {
-                          Navigator.pushReplacement(
-                            context, MaterialPageRoute(builder: (context) =>
-                              sehr()),
-                          );
-                        }
-                      }
-                      else {
-                        if (sehiri.isNotEmpty) {
-                          Navigator.pushReplacement(
-                            context, MaterialPageRoute(builder: (context) =>
-                              cknew()),
-                          );
-                        }
-                        else {
-                          Navigator.pushReplacement(
-                            context, MaterialPageRoute(builder: (context) =>
-                              sehr()),
-                          );
-                        }
-                      }
-                    },
-                  )
-                ],
-              ),
-            );
-          }
-        },
+                      Text('Hoşgeldiniz',
+                          style: TextStyle(fontSize: 50,color: Colors.white,),),
+                      SizedBox(height: 50,),
+                      RoundedButton(
+                        text: "Hoşbuldum...",
+                        press: () {
+                          if (ckin.isNotEmpty) {
+                            if (sehiri.isNotEmpty) {
+                              Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (context) =>
+                                  ekran()),
+                              );
+                            }
+                            else {
+                              Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (context) =>
+                                  sehr()),
+                              );
+                            }
+                          }
+                          else {
+                            if (sehiri.isNotEmpty) {
+                              Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (context) =>
+                                  cknew()),
+                              );
+                            }
+                            else {
+                              Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (context) =>
+                                  sehr()),
+                              );
+                            }
+                          }
+                        },
+                      )
+                    ],
+                  ),
+                );
+              }
+            },
       ),
     );
   }
