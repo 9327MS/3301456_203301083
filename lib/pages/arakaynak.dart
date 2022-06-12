@@ -4,19 +4,17 @@ import 'package:bitkim/pages/cklistnew.dart';
 import 'package:bitkim/pages/ekran.dart';
 import 'package:bitkim/pages/sehrdenem.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 
-late String ckin;
-late String sehiri;
-final _firestore=FirebaseFirestore.instance;
-CollectionReference moviesRef=_firestore.collection('kullanicicicek');
+var ckin;
+var sehiri;
 
 class arakaynak extends StatelessWidget {
   @override
   Widget build(BuildContext context)  {
+    final _firestore=FirebaseFirestore.instance;
+    CollectionReference moviesRef=_firestore.collection('kullanicicicek');
     var babaRef = moviesRef.doc(user_email);
     final screenSize = MediaQuery
         .of(context)
@@ -36,7 +34,7 @@ class arakaynak extends StatelessWidget {
         builder: (Buildcontext, AsyncSnapshot asyncSnapshot) {
           sehiri = '${asyncSnapshot.data.data()['sehir']}';
           ckin = '${asyncSnapshot.data.data()['bitki']}';
-          if (!asyncSnapshot.hasData) {
+          if (sehiri==null || ckin==null){
             return const Scaffold(
               body: Center(
                 child: CircularProgressIndicator(),
@@ -50,7 +48,7 @@ class arakaynak extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                      'assets/wallpaperflare.jpgassets/wallpaperflare.jpg'
+                      'assets/wallpaperflare.jpg'
                   ),
                   fit: BoxFit.fill,
                 ),
@@ -61,7 +59,8 @@ class arakaynak extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Hoşgeldiniz',
-                      style: TextStyle(fontSize: 24)),
+                      style: TextStyle(fontSize: 50,color: Colors.white,),),
+                  SizedBox(height: 50,),
                   RoundedButton(
                     text: "Hoşbuldum...",
                     press: () {

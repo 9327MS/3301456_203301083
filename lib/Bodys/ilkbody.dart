@@ -7,16 +7,6 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final firebaseUser = context.watch<User?>();
-    //
-    // if (firebaseUser != null) {
-    //   if(ckin!=null) {
-    //     return ekran();
-    //   }
-    //   else{
-    //     return sehr();
-    //   }
-    // }
     final screenSize = MediaQuery
         .of(context)
         .size;
@@ -44,11 +34,11 @@ class Body extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Icon(
-              Icons.meeting_room,
-              color: Colors.orangeAccent,
-              size: 40,
+              Icons.meeting_room_outlined,
+              color: Colors.black,
+              size: 60,
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 30),
             Icon(
               Icons.grass,
               color: Colors.green,
