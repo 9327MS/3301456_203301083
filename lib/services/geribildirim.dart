@@ -25,6 +25,8 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
     return AlertDialog(
+      title: Text('Geri bildirim'),
+
       content: Form(
         key: _formKey,
         child: TextFormField(

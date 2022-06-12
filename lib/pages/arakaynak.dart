@@ -7,17 +7,20 @@ import 'package:bitkim/pages/sehrdenem.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+import 'dart:async';
 
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 var ckin;
 var sehiri;
 
 class arakaynak extends StatelessWidget {
   @override
   Widget build(BuildContext context)  {
-    final _firestore=FirebaseFirestore.instance;
-    CollectionReference cicekref=_firestore.collection('kullanicicicek');
-    var bilgihesap = cicekref.doc(user_email);
-    final screenSize = MediaQuery
+  final _firestore=FirebaseFirestore.instance;
+   CollectionReference cicekref=_firestore.collection('kullanicicicek');
+   var bilgihesap = cicekref.doc(user_email);
+   final screenSize = MediaQuery
         .of(context)
         .size;
     return Scaffold(
@@ -35,10 +38,15 @@ class arakaynak extends StatelessWidget {
         builder: (Buildcontext, AsyncSnapshot asyncSnapshot) {
           sehiri = '${asyncSnapshot.data.data()['sehir']}';
           ckin = '${asyncSnapshot.data.data()['bitki']}';
-          if (FutureBuilder.debugRethrowError==true){
-            return const Scaffold(
+          if (MethodCall==null){
+            return  new Scaffold(
+              backgroundColor: Colors.transparent,
               body: Center(
-                child: CircularProgressIndicator(),
+                child:
+                LoadingAnimationWidget.twistingDots(
+                  leftDotColor: const Color(0xFF1A1A3F),
+                  rightDotColor: const Color(0xFFEA3799),
+                  size: 165,),
               ),
             );
           }
@@ -59,6 +67,7 @@ class arakaynak extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+
                   Text('Hoşgeldiniz',
                       style: TextStyle(fontSize: 50,color: Colors.white,),),
                   SizedBox(height: 50,),

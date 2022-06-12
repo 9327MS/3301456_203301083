@@ -68,7 +68,7 @@ class Body extends StatelessWidget {
                         .showSnackBar(SnackBar(content: Text('Şifreniz en az 6 karakter olmalı')));
                   }
                   else{
-                    if(!EmailValidator.validate(user_email)){
+                    if(!EmailValidator.validate(user_email )||user_email.length<7){
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SnackBar(content: Text('Lütfen geçerli bir mail adesi giriniz...')));
                     }

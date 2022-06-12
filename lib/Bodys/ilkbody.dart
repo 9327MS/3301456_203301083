@@ -50,7 +50,7 @@ class Body extends StatelessWidget {
               color: Colors.white,
               textColor: Colors.green,
               press: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
@@ -65,7 +65,7 @@ class Body extends StatelessWidget {
               color: Colors.white,
               textColor: Colors.green,
               press: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) {

@@ -6,6 +6,7 @@ import 'package:bitkim/pages/sehrdenem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bitkim/services/api.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -30,11 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     if (weatherList.isEmpty) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
+      return  new Scaffold(
+        backgroundColor: Colors.transparent,
+          body: Center(
+          child:
+          LoadingAnimationWidget.twistingDots(
+          leftDotColor: niceBlue,
+          rightDotColor: Colors.white,
+           size: 165,),
+    ),
+    );
     } else {
       return Container(
         decoration: BoxDecoration(
