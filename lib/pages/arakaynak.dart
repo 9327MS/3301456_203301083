@@ -1,3 +1,4 @@
+import 'package:async/async.dart';
 import 'package:bitkim/Bodys/girisbody.dart';
 import 'package:bitkim/kompodent/rounded_button.dart';
 import 'package:bitkim/pages/cklistnew.dart';
@@ -14,8 +15,8 @@ class arakaynak extends StatelessWidget {
   @override
   Widget build(BuildContext context)  {
     final _firestore=FirebaseFirestore.instance;
-    CollectionReference moviesRef=_firestore.collection('kullanicicicek');
-    var babaRef = moviesRef.doc(user_email);
+    CollectionReference cicekref=_firestore.collection('kullanicicicek');
+    var bilgihesap = cicekref.doc(user_email);
     final screenSize = MediaQuery
         .of(context)
         .size;
@@ -30,11 +31,11 @@ class arakaynak extends StatelessWidget {
         ),
       ),
       body: StreamBuilder<DocumentSnapshot>(
-        stream: babaRef.snapshots(),
+        stream: bilgihesap.snapshots(),
         builder: (Buildcontext, AsyncSnapshot asyncSnapshot) {
           sehiri = '${asyncSnapshot.data.data()['sehir']}';
           ckin = '${asyncSnapshot.data.data()['bitki']}';
-          if (sehiri==null || ckin==null){
+          if (FutureBuilder.debugRethrowError==true){
             return const Scaffold(
               body: Center(
                 child: CircularProgressIndicator(),
