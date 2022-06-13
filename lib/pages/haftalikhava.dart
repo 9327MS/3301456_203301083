@@ -198,7 +198,7 @@ class BarChartSample3State extends State<BarChartSample3> {
       appBar: AppBar(
         leadingWidth: 60,
         leading: ElevatedButton.icon(
-            onPressed: () => Navigator.push(context,MaterialPageRoute(builder: (context) => HomeScreen())),
+            onPressed: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => HomeScreen())),
             icon: const Icon(Icons.arrow_left_sharp),
             label: const Text('GERİ'),
             style: ElevatedButton.styleFrom(

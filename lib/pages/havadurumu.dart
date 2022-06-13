@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: buildTextColor(weatherList[0].status),
                     ),
                   ),
-                  SizedBox(width: 115,)
+                  SizedBox(width: 50,)
                 ],
               ),
               const SizedBox(
