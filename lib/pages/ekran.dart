@@ -20,7 +20,25 @@ class ekran extends StatefulWidget {
   _ekranState createState() => _ekranState();
 }
 
-class _ekranState extends State<ekran> {
+class _ekranState extends State<ekran> with SingleTickerProviderStateMixin{
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(duration: Duration(seconds: 3),vsync: this);
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.bounceInOut)..addListener(()=> this.setState ((){ }))
+      ..addStatusListener((durum) {});
+
+    _controller.forward();
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
   List<String>
   ckism = ['Ametist','Papatya','Gül','Zambak','Lale','Nergis','Orkide','Barış'],
   ckinfo = ['Gölgede yetişen bitkiler kategorisinde yer alan yıllık Ametist çiçeği, sıcak ve gölgeli yerleri sever.Bu yüzden evlerde sık sık balkonlarda yetiştirilir.  Bu kadar sık yetiştirilmesinin bir sebebi de çok hoş bir görünümü olmasıdır.Ametist kelimesi Latince kelimeden gelir. ametustos, ayık anlamına gelir, bu çiçeği (ve adaşı kristalini) ruhsal bilgelik ve berraklığa bağlar. Ama aynı zamanda popüler bir hayranlık anlamı da var. Sinek kuşları, ametist çiçeğinin parlak yeşil tepelerin üzerinde ortaya çıkan safir çiçeklerinden hoşlanır. Bunları, rengine hayran kalacağınız ve sessiz, meditatif zaman geçirebileceğiniz saksılara veya kaya bahçelerine yerleştirin.', 'Papatya ülkemize özgü bir çiçektir. Ana vatanı Türkiye’dir. Bu bitki, ilkbahardan haziran ayının sonuna kadar çiçek açar. Boyu ortalama 25 cm’dir. Sapları yoktur.Beyaz renkteki yaprakları ise ince ve parçalıdır. Çiçeğin orta kısmında sarı bir yuvarlak bulunur. Bu özelliği nedeniyle halk arasında sarı papatya ismiyle de anılır.Papatya çiçeğinin anlamı çok merak ediliyor. Seviyor, sevmiyor fallarıyla aklımıza kazınan bu çiçek aslında temiz bir kalbi simgeler. İnsanlar genellikle temiz hislerini yansıtmak amacıyla birbirlerine papatya hediye ederler.', 'Gül, evlerimizin, iş yerlerimizin olmazsa olmazları arasında yer almaktadır. Mis kokusu, zarif duruşu ile en çok sevilen çiçek konumundadır. Anavatanı Anadolu, İran ve Çin dir ama başka yerlerde de yetişir. Çok güzel ve kıymetlidir. Park ve bahçelerin süslenmesinde kullanıldığı gibi odaları, balkon ve terasları süsler. Kesme çiçekçilikte çok talep edilen bir çiçektir.', 'Zambak bitkisi bahçelere çok yakışan, doğrudan gün ışığına ihtiyaç duymadığı için hemen hemen her yerde bulunabilen bir bitkidir. Mayıs aylarında açan çiçekler çok hoş görünmekle birlikte kış aylarını yapraklı geçirmektedirler. Zambak bitkisinden yağ elde edildiğinde zambak yağı da bir şifa deposudur. Evler kadar bahçelerde de yetiştirilebilen zambak çiçeği, saksı bitkisi olarak satışa sunulmaktadır. Doğru bakıldığında uzun süre evinizde misafir olarak kalacaktır. Bu nedenle yetiştirme koşullarını bilmek, su isteğini ve güneş şartını takip etmek gerekmektedir.', 'Lale çiçeği, genellikle çok çabuk büyüyen ve bakımı da bir o kadar kolay olan bir bitkidir. Bu nedenle de çiçekçilerin vitrinlerinde çok fazla görebildiğimiz bitki türleri arasında yer alır. Zambakgiller (Liliaceae) familyasından Lale cinsi, rengarenk ve zarif çiçekleri ile dikkat çeken bir süs bitkisidir. Lale mevsimlik çiçek açan bitkilerdendir. Sadece bir kez çiçeklendikten sonra solmaya başlar. Bu nedenle toprak değişimi gibi işlemlere gerek duyulmaz Etli ve yeşil 2-8 yaprağı vardır. Çiçekler, saplar ucunda çoğunlukla bir, bazen ikidir.Kırmızı, sarı ve ara tonlarda renklere sahiptir.', 'Nergis çiçeği narin bir yapıya sahip olan çiçek türüdür. Eğer etrafınızda bir nergis çiçeği varsa onu görmeden önce kokusunu alırsınız.  Bu çiçeğin sapları, yaprakları ve kısacası her bölümü çok hassas olduğu için çocuklu aileler için önerilmez. Nergis görünüm ile etkileyici bir yapıya sahip iken bir yandan da çok hassastır ,ayrıca çabucak solar. Nergis çiçeği, saygı duyma anlamıyla bilindiğinden, hayatta değer verilen bireylere verilecek bir çiçek türüdür. Nergis çiçeğinin değişik çeşitleri bulunsa da genel olarak hepsinin anlamı aynıdır. Bu çiçek; aşk ve güzellik çiçeği olarak da nitelendirilir. Yaprakları solarsa ya da zarar görürse kendiliğinden yenilenir.', 'Orkide çiçeği, Salepgiller familyasına ait destansı güzelliğe sahip bir çiçektir, asaletin ve özenin simgesidir. Tropikal iklimleri seven orkide dünyanın her yerinde yetişme imkanına sahiptir. Dünyada en geniş ikinci familyaya sahiptir. Bu zarif çiçeğin yaprakları sıralı, pul şeklinde ve damarlı olur.', 'Barış çiçeğinin bir diğer adı da kaşık çiçeğidir. Hatta kaşık çiçeği ismi ile daha çok bilinmektedir. Menekşeden sonra evlerde en sık rastladığımız bitki barış çiçeğidir. Çiçeklerinin oldukça zarif ve güzel bir görünüme sahip olduğunu söylemek mümkündür. Bakımı kolay salon çiçekleri arasında yer almaktadır. Fakat evde küçük bir çocuğunuz ya da bir evcil hayvanınız varsa bu çiçeğe çok dikkat etmeniz gerekmektedir. Çünkü çiçeğin yapraklarında zehir bulunma ihtimali mevcuttur.',],
@@ -119,10 +137,10 @@ class _ekranState extends State<ekran> {
                    ),
                  ],
                ),
-             Text('Canım Bitkim',style: TextStyle(fontSize: 23,
+             Text('Canım Bitkim',style: TextStyle(fontSize: _animation.value*23,
                  fontStyle: FontStyle.italic,
                  fontWeight: FontWeight.bold),),
-             Text(ckism[int.parse(ckin)],style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+             Text(ckism[int.parse(ckin)],style: TextStyle(fontSize:  _animation.value*15,fontWeight: FontWeight.bold)),
              Container(
                width: 350,
                height: 300,
@@ -146,7 +164,7 @@ class _ekranState extends State<ekran> {
                         SizedBox(),
                          IconButton(
                            iconSize: 50,
-                           color: Colors.white,
+                           color: Colors.lightBlueAccent,
                            tooltip: 'Hava durumu',
                            icon: Icon(Icons.thermostat_auto_rounded),
                            onPressed: () {
@@ -176,7 +194,7 @@ class _ekranState extends State<ekran> {
                ),
                  borderRadius: BorderRadius.circular(10),
              ),
-                 child: Text(ckinfo[int.parse(ckin)],style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),),
+                 child: Text(ckinfo[int.parse(ckin)],style: TextStyle(fontSize:  _animation.value*15, color: Colors.black, fontWeight: FontWeight.bold),),
              ),
              SizedBox(height: 5,),
              Container(
@@ -199,14 +217,14 @@ class _ekranState extends State<ekran> {
                  Column(
                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                    children: [
-                     Text('Nasıl \nsulanmalı ?' ,style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold)),
+                     Text('Nasıl \nsulanmalı ?' ,style: TextStyle(fontSize:  _animation.value*15, color: Colors.blue, fontWeight: FontWeight.bold)),
                      Icon(Icons.water_drop,color: Colors.blue[300],size: 50,),
                      SizedBox(),
                    ],
                  ),
                  Container(
                    width: 250,
-                 child: Text(cksu[int.parse(ckin)],style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold,overflow: TextOverflow.clip ),softWrap: true),
+                 child: Text(cksu[int.parse(ckin)],style: TextStyle(fontSize:  _animation.value*15, color: Colors.black, fontWeight: FontWeight.bold,overflow: TextOverflow.clip ),softWrap: true),
                  )
                ]
              )
@@ -232,7 +250,7 @@ class _ekranState extends State<ekran> {
                      children: <Widget>[
                        Container(
                          width: 250,
-                         child: Text(ckbk[int.parse(ckin)],style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold,overflow: TextOverflow.clip ),softWrap: true),
+                         child: Text(ckbk[int.parse(ckin)],style: TextStyle(fontSize:  _animation.value*15, color: Colors.black, fontWeight: FontWeight.bold,overflow: TextOverflow.clip ),softWrap: true),
                        ),
                        Column(
                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -259,7 +277,7 @@ class _ekranState extends State<ekran> {
                ),
                child: GestureDetector(
                    child: new  Text('Daha fazlası için tıklayın...',style: TextStyle(
-                       fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),),
+                       fontSize:  _animation.value*20, color: Colors.white, fontWeight: FontWeight.bold),),
                    onTap: ()  => launch(ckek[int.parse(ckin)])
                ),
              ),

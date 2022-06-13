@@ -191,6 +191,9 @@ class BarChartSample3 extends StatefulWidget {
 class BarChartSample3State extends State<BarChartSample3> {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 60,
@@ -241,13 +244,16 @@ class BarChartSample3State extends State<BarChartSample3> {
           ),
         ],
       ),
-    body: Container(
+    body: Container(width: screenSize.width,
+      height: screenSize.height,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Colors.white,Colors.blue],
+        image: DecorationImage(
+          image: AssetImage(
+              'assets/matthias-schroder-KoBCaTPydqs-unsplash.jpg'
+          ),
+          fit: BoxFit.fill,
         ),
+        shape: BoxShape.rectangle,
       ),
       child: Card(
         elevation: 150,
