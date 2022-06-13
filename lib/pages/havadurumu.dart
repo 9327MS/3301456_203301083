@@ -1,12 +1,37 @@
 import 'dart:convert';
 import 'package:bitkim/model/weather.dart';
-import 'package:bitkim/pages/arakaynak.dart';
 import 'package:bitkim/pages/ekran.dart';
+import 'package:bitkim/pages/arakaynak.dart';
+import 'package:bitkim/pages/haftalikhava.dart';
 import 'package:bitkim/pages/sehrdenem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bitkim/services/api.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+var ilkgunmax;
+var ilkgun;
+var ikigun;
+var ucgun;
+var dortgun;
+var besgun;
+var altigun;
+var ilkgunort;
+var ilkgunmin;
+var ikigunmax;
+var ikigunort;
+var ikigunmin;
+var ucgunmax;
+var ucgunort;
+var ucgunmin;
+var dortgunmax;
+var dortgunort;
+var dortgunmin;
+var besgunmax;
+var besgunort;
+var besgunmin;
+var altigunmax;
+var altigunort;
+var altigunmin;
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -17,6 +42,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String city = "";
   List<Weather> weatherList = [];
+
   @override
 
   void initState() {
@@ -42,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     );
     } else {
+
       return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -72,14 +99,69 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: buildTextColor(weatherList[0].status),
                 ),
               ),
-              Text(
-                weatherList[0].description,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.w300,
-                  color: buildTextColor(weatherList[0].status),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                          icon: Icon(Icons.bar_chart),
+                      iconSize: 40,
+                      color: buildTextColor(weatherList[0].status),
+                        tooltip: 'Grafik',
+                        onPressed: ()
+                        {
+
+                          ilkgunmax =double.parse("${double.parse(weatherList[0].max).round()}");
+                          ilkgunmin =double.parse( "${double.parse(weatherList[0].min).round()}");
+                          ilkgunort=(ilkgunmax+ilkgunmin)/2;
+                          ilkgun=weatherList[0].day;
+                          ikigunmax =double.parse("${double.parse(weatherList[1].max).round()}");
+                          ikigunmin =double.parse( "${double.parse(weatherList[1].min).round()}");
+                          ikigunort=(ikigunmax+ikigunmin)/2;
+                          ikigun=weatherList[1].day;
+                          ucgunmax =double.parse("${double.parse(weatherList[2].max).round()}");
+                          ucgunmin =double.parse( "${double.parse(weatherList[2].min).round()}");
+                          ucgunort=(ucgunmax+ucgunmin)/2;
+                          ucgun=weatherList[2].day;
+                          dortgunmax =double.parse("${double.parse(weatherList[3].max).round()}");
+                          dortgunmin =double.parse( "${double.parse(weatherList[3].min).round()}");
+                          dortgunort=(dortgunmax+dortgunmin)/2;
+                          dortgun=weatherList[3].day;
+                          besgunmax =double.parse("${double.parse(weatherList[5].max).round()}");
+                          besgunmin =double.parse( "${double.parse(weatherList[5].min).round()}");
+                          besgunort=(besgunmax+besgunmin)/2;
+                          besgun=weatherList[4].day;
+                          altigunmax=double.parse("${double.parse(weatherList[6].max).round()}");
+                          altigunmin =double.parse( "${double.parse(weatherList[6].min).round()}");
+                          altigunort=(altigunmax+altigunmin)/2;
+                          altigun=weatherList[5].day;
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => BarChartSample3()));
+                        },
+                      ),
+                      Text(
+                        'Haftalık grafik',
+                        style: TextStyle(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.w300,
+                          color: buildTextColor(weatherList[0].status),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    weatherList[0].description,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w300,
+                      color: buildTextColor(weatherList[0].status),
+                    ),
+                  ),
+                  SizedBox(width: 115,)
+                ],
               ),
               const SizedBox(
                 height: 30.0,
@@ -221,7 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   tooltip: 'Şehir değiştir',
                   onPressed: ()
                   {
-                    Navigator.push(context,
+                    Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => sehr()));
                   },
                 ),
@@ -256,7 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case "cuma":
         return "Cuma        ";
       case "cumartesi":
-        return "Cumartesi   ";
+        return "Cumartesi ";
       case "pazar":
         return "Pazar      ";
       default:

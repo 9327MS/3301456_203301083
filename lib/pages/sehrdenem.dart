@@ -1,6 +1,6 @@
 import 'package:bitkim/kompodent/secbutonu.dart';
-import 'package:bitkim/pages/arakaynak.dart';
 import 'package:bitkim/pages/cklistnew.dart';
+import 'package:bitkim/pages/arakaynak.dart';
 import 'package:bitkim/pages/havadurumu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,7 +22,6 @@ class _sehrState extends State<sehr> {
 
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
     final screenSize = MediaQuery
         .of(context)
         .size;
@@ -143,9 +142,10 @@ class _sehrState extends State<sehr> {
                      try {
                        final collection =
                        FirebaseFirestore.instance.collection('kullanicicicek');
-                       await collection.doc(firebaseUser.email).set({
+                       await collection.doc(email).set({
                          'bitki':ckin,
                          'sehir': selectedValue,
+                         'isim': isim,
                        });
                        message = 'Çiçek seçin ';
                      }

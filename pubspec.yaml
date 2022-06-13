@@ -46,6 +46,8 @@ dependencies:
   email_validator: ^2.0.1
   loading_animation_widget: ^1.2.0+2
   passwordfield: ^0.1.0
+  graphic: ^0.10.5
+  fl_chart: ^0.51.0
 
 
 

@@ -1,5 +1,4 @@
 import 'package:bitkim/firebase_options.dart';
-import 'package:bitkim/menu_notifier.dart';
 import 'package:bitkim/pages/ilk.dart';
 import 'package:bitkim/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,7 +30,6 @@ class MyApp extends StatelessWidget {
             context.read<FlutterFireAuthService>().authStateChanges,
             initialData: null,
           ),
-          ChangeNotifierProvider(create: (context) => MenuDrawerNotifier()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -43,7 +41,7 @@ class MyApp extends StatelessWidget {
           home: WelcomeScreen(),
           routes: {
             "home": (_) => WelcomeScreen(),
-            "signup": (_) => SignUpScreen(),
+            "Kayıt ol": (_) => SignUpScreen(),
             "login": (_) => giris(),
           },
         ));

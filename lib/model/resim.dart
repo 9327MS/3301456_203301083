@@ -1,5 +1,5 @@
-import 'package:bitkim/pages/arakaynak.dart';
 import 'package:bitkim/pages/ekran.dart';
+import 'package:bitkim/pages/arakaynak.dart';
 import 'package:flutter/material.dart';
 
 class reisim extends StatefulWidget {

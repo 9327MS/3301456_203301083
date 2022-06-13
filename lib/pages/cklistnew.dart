@@ -1,6 +1,6 @@
 import 'package:bitkim/kompodent/secbutonu.dart';
-import 'package:bitkim/pages/arakaynak.dart';
 import 'package:bitkim/pages/ekran.dart';
+import 'package:bitkim/pages/arakaynak.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class _cknewState extends State<cknew> {
     ];
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
+
     final screenSize = MediaQuery
         .of(context)
         .size;
@@ -148,9 +148,10 @@ class _cknewState extends State<cknew> {
                         try {
                           final collection =
                           FirebaseFirestore.instance.collection('kullanicicicek');
-                          await collection.doc(firebaseUser.email).set({
+                          await collection.doc(email).set({
                             'sehir': sehiri,
                             'bitki': items.indexOf(selectedValue),
+                            'isim': isim,
                           });
                           ckin=items.indexOf(selectedValue).toString();
                           message = 'Hoşgeldiniz ';

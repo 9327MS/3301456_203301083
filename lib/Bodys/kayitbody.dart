@@ -50,6 +50,12 @@ class Body extends StatelessWidget {
               color: Colors.green,
             ),
             RoundedInputField(
+              hintText: "Adınız",
+              onChanged: (value) {
+                user_name = value;
+              },
+            ),
+            RoundedInputField(
               hintText: "Mail adresiniz",
               onChanged: (value) {
                 user_email = value;
@@ -83,6 +89,7 @@ class Body extends StatelessWidget {
                     await collection.doc(user_email).set({
                       'sehir': "",
                       'bitki': "",
+                      'isim': user_name,
                     });
                     }
                   }

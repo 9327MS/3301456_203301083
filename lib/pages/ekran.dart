@@ -1,4 +1,4 @@
-import 'package:bitkim/pages/arakaynak.dart';
+
 import 'package:bitkim/pages/bildirim.dart';
 import 'package:bitkim/pages/cklistnew.dart';
 import 'package:bitkim/pages/havadurumu.dart';
@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bitkim/services/auth.dart';
+
+import 'arakaynak.dart';
 
 class ekran extends StatefulWidget {
   ekran({Key? key});
@@ -62,7 +64,7 @@ class _ekranState extends State<ekran> {
     child: Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-     Text('Hoşgeldiniz  '),
+     Text('Hoşgeldin '+isim.toUpperCase()),
       IconButton(
         icon: Icon(Icons.exit_to_app_outlined),
         tooltip: 'Çıkış yap',
@@ -144,7 +146,7 @@ class _ekranState extends State<ekran> {
                         SizedBox(),
                          IconButton(
                            iconSize: 50,
-                           color: Colors.yellow,
+                           color: Colors.white,
                            tooltip: 'Hava durumu',
                            icon: Icon(Icons.thermostat_auto_rounded),
                            onPressed: () {

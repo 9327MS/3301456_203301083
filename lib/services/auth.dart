@@ -1,9 +1,9 @@
+
 import 'package:bitkim/pages/arakaynak.dart';
 import 'package:bitkim/pages/ilk.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'uyaridiyalog.dart';
 import 'dart:async';
 
@@ -54,7 +54,7 @@ class FlutterFireAuthService {
       if (user != null) {
         Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) =>
-            arakaynak()),
+            ekrandeneme()),
         );
         return user;
       } else {
