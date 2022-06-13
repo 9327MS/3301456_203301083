@@ -65,7 +65,7 @@ class _hakkindaState extends State<hakkinda>
           children: <Widget>[
             Container(padding: EdgeInsets.only(left: 5,right: 10) ,child: Icon(Icons.info,color: Colors.green,size: 50),),
            Text("Bu uygulama \nAhmet CEVAHİR ÇINAR'ın\nvizesi sayesinde oluşturulmuştur.",style: TextStyle(
-                fontSize: _animation.value*25, color: Colors.white, fontWeight: FontWeight.bold,),
+                fontSize: _animation.value*19, color: Colors.white, fontWeight: FontWeight.bold,),
             ),
           ]
       ),

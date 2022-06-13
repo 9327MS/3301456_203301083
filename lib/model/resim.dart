@@ -10,7 +10,7 @@ class reisim extends StatefulWidget {
 }
 List<String>
 ckism = ['Ametist','Papatya''Gül','Zambak','Lale','Nergis','Orkide','Barış'],
-ckresim =['assets/images/amtes.jpg','assets/images/papatya.png','assets/images/gül.jpg','assets/images/zambak.jpg','assets/images/lale.jpg','assets/images/nergis.jpg','assets/images/orkide.jpg','assets/images/barıs.jpg'];
+ckresim =['assets/images/amtes.jpg','assets/images/papatya.png','assets/images/gul.jpg','assets/images/zambak.jpg','assets/images/lale.jpg','assets/images/nergis.jpg','assets/images/orkide.jpg','assets/images/baris.jpg'];
 class _reisimState extends State<reisim> {
   @override
   Widget build(BuildContext context) {
