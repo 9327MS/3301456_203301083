@@ -68,8 +68,13 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     );
     } else {
-
+      final screenSize = MediaQuery
+          .of(context)
+          .size;
       return Container(
+
+        width: screenSize.width,
+        height: screenSize.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -87,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 20.0,
               ),
               Image.network(weatherList[0].icon,
-                  width: MediaQuery.of(context).size.width / 3),
+                  width: MediaQuery.of(context).size.height / 4),
               const SizedBox(
                 height: 5.0,
               ),
@@ -149,18 +154,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: buildTextColor(weatherList[0].status),
                         ),
                       ),
+                      Container(
+                        width: 250,
+                        child: Text(weatherList[0].description,textAlign: TextAlign.center,style:
+                        TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.w300,
+                            color: buildTextColor(weatherList[0].status),overflow: TextOverflow.clip ),softWrap: true),
+                      ),
                     ],
                   ),
-                  Text(
-                    weatherList[0].description,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.w300,
-                      color: buildTextColor(weatherList[0].status),
-                    ),
-                  ),
-                  SizedBox(width: 50,)
                 ],
               ),
               const SizedBox(
