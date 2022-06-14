@@ -48,6 +48,7 @@ class _sehrState extends State<sehr> {
             ),
           alignment: Alignment.center,
         child: DropdownButtonHideUnderline(
+            child: SingleChildScrollView(
               child: Column(
              children: [
                Icon(
@@ -181,6 +182,7 @@ class _sehrState extends State<sehr> {
                )
              ],
            ),
+        )
         ),
         ),
     ),

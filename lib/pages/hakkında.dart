@@ -53,12 +53,13 @@ class _hakkindaState extends State<hakkinda>
             ),
     padding: EdgeInsets.only(left: 25, right: 10),
     alignment: Alignment.topCenter,
+    child: SingleChildScrollView(
     child: Column(
     mainAxisAlignment: MainAxisAlignment.start,
     children: <Widget>[
 
     Icon(
-        Icons.code, color: Colors.green,size: 300,
+        Icons.code, color: Colors.green,size: screenSize.height/3,
         ),
       Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -92,6 +93,7 @@ class _hakkindaState extends State<hakkinda>
             ),
               ],
         )
+    )
 
     ),
     );

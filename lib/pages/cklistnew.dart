@@ -54,6 +54,7 @@ class _cknewState extends State<cknew> {
           ),
           alignment: Alignment.center,
           child: DropdownButtonHideUnderline(
+            child: SingleChildScrollView(
             child: Column(
               children: [
                 Icon(
@@ -174,6 +175,7 @@ class _cknewState extends State<cknew> {
                 )
               ],
             ),
+      )
           ),
         ),
       ),
