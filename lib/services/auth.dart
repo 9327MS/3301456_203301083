@@ -1,4 +1,5 @@
 
+import 'package:bitkim/pages/anim.dart';
 import 'package:bitkim/pages/arakaynak.dart';
 import 'package:bitkim/pages/ilk.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -54,7 +55,7 @@ class FlutterFireAuthService {
       if (user != null) {
         Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) =>
-            ekrandeneme()),
+            animasyon()),
         );
         return user;
       } else {
