@@ -2,10 +2,8 @@ import 'package:bitkim/kompodent/secbutonu.dart';
 import 'package:bitkim/pages/ekran.dart';
 import 'package:bitkim/pages/arakaynak.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:provider/provider.dart';
 class cknew extends StatefulWidget {
   const cknew({Key? key}) : super(key: key);
 
@@ -53,6 +51,7 @@ class _cknewState extends State<cknew> {
               shape: BoxShape.rectangle,
           ),
           alignment: Alignment.center,
+          child: GestureDetector(
           child: DropdownButtonHideUnderline(
             child: SingleChildScrollView(
             child: Column(
@@ -175,7 +174,34 @@ class _cknewState extends State<cknew> {
                 )
               ],
             ),
-      )
+      ),
+    ),
+            onVerticalDragUpdate: (details) {},
+            onHorizontalDragUpdate: (details) async{
+              if (details.delta.direction > 0) {
+                if(selectedValue!=null) {
+                  String message;
+                  try {
+                    final collection =
+                    FirebaseFirestore.instance.collection('kullanicicicek');
+                    await collection.doc(email).set({
+                      'sehir': sehiri,
+                      'bitki': items.indexOf(selectedValue),
+                      'isim': isim,
+                    });
+                    ckin=items.indexOf(selectedValue).toString();
+                  }
+                  catch (e) {
+                    message = 'Hata'+ e.toString();
+                  }
+                  Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => ekran()),
+                  );
+                }
+                else{
+                }
+              }
+              else {}
+            },
           ),
         ),
       ),

@@ -49,8 +49,10 @@ dependencies:
   graphic: ^0.10.5
   fl_chart: ^0.51.0
   rive: ^0.8.4
-
-
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/ikon.png"
 
 dev_dependencies:
   flutter_test:
@@ -82,14 +84,15 @@ flutter:
     - assets/images/nergis.jpg
     - assets/images/orkide.jpeg
     - assets/images/zambak.jpg
-    - assets/ikon.png
     - assets/images/orkide.jpg
     - assets/matthias-schroder-KoBCaTPydqs-unsplash.jpg
     - assets/ivan-skorovarov-qvFtW-FsUa0-unsplash.jpg
     - assets/wallpaperflare.jpg
     - assets/wallpaperflare.jpg
     - assets/new_file2.riv
-  # The following line ensures that the Material Icons font is
+    - assets/icon/ikon.png
+
+        # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   # To add assets to your application, add an assets section, like this:

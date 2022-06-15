@@ -8,9 +8,7 @@ import 'package:bitkim/model/resim.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bitkim/services/auth.dart';
-
 import 'arakaynak.dart';
 
 class ekran extends StatefulWidget {
@@ -48,8 +46,6 @@ class _ekranState extends State<ekran> with SingleTickerProviderStateMixin{
   ckres =['assets/images/amtes.jpg','assets/images/papatya.png','assets/images/gul.jpg','assets/images/zambak.jpg','assets/images/lale.jpg','assets/images/nergis.jpg','assets/images/orkide.jpg','assets/images/baris.jpg'];
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of (context).size;
-    final firebaseUser = context.watch<User?>();
     final screenSize = MediaQuery
         .of(context)
         .size;
@@ -141,7 +137,8 @@ class _ekranState extends State<ekran> with SingleTickerProviderStateMixin{
                  fontStyle: FontStyle.italic,
                  fontWeight: FontWeight.bold),),
              Text(ckism[int.parse(ckin)],style: TextStyle(fontSize:  _animation.value*15,fontWeight: FontWeight.bold)),
-             Container(
+                 GestureDetector(
+                   child: Container(
                width: 350,
                height: 300,
                decoration: BoxDecoration(
@@ -158,7 +155,6 @@ class _ekranState extends State<ekran> with SingleTickerProviderStateMixin{
                  borderRadius: BorderRadius.circular(8),
                ),
                alignment: Alignment.topCenter,
-               child:  GestureDetector(
                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                        children: [
                         SizedBox(),
@@ -174,10 +170,10 @@ class _ekranState extends State<ekran> with SingleTickerProviderStateMixin{
                            },)
                      ]
                    ),
-                   onDoubleTap: () { Navigator.pushReplacement(context,
-                       MaterialPageRoute(builder: (context) => reisim()));
-                   }
                ),
+                     onDoubleTap: () { Navigator.pushReplacement(context,
+                         MaterialPageRoute(builder: (context) => reisim()));
+                     }
              ),
              SizedBox(height: 5,),
              Container(
