@@ -38,6 +38,7 @@ class _cknewState extends State<cknew> {
         title: Text('Çiçeğiniz'),
       ),
       body: Center(
+        child: GestureDetector(
         child:Container(
           width: screenSize.width,
           height: screenSize.height,
@@ -51,7 +52,6 @@ class _cknewState extends State<cknew> {
               shape: BoxShape.rectangle,
           ),
           alignment: Alignment.center,
-          child: GestureDetector(
           child: DropdownButtonHideUnderline(
             child: SingleChildScrollView(
             child: Column(
@@ -86,6 +86,7 @@ class _cknewState extends State<cknew> {
                       ),
                     ],
                   ),
+
                   items: items
                       .map((item) => DropdownMenuItem<String>(
                     value: item,
@@ -176,34 +177,34 @@ class _cknewState extends State<cknew> {
             ),
       ),
     ),
-            onVerticalDragUpdate: (details) {},
-            onHorizontalDragUpdate: (details) async{
-              if (details.delta.direction > 0) {
-                if(selectedValue!=null) {
-                  String message;
-                  try {
-                    final collection =
-                    FirebaseFirestore.instance.collection('kullanicicicek');
-                    await collection.doc(email).set({
-                      'sehir': sehiri,
-                      'bitki': items.indexOf(selectedValue),
-                      'isim': isim,
-                    });
-                    ckin=items.indexOf(selectedValue).toString();
-                  }
-                  catch (e) {
-                    message = 'Hata'+ e.toString();
-                  }
-                  Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => ekran()),
-                  );
-                }
-                else{
-                }
-              }
-              else {}
-            },
-          ),
         ),
+          onVerticalDragUpdate: (details) {},
+          onHorizontalDragUpdate: (details) async{
+            if (details.delta.direction > 0) {
+              if(selectedValue!=null) {
+                String message;
+                try {
+                  final collection =
+                  FirebaseFirestore.instance.collection('kullanicicicek');
+                  await collection.doc(email).set({
+                    'sehir': sehiri,
+                    'bitki': items.indexOf(selectedValue),
+                    'isim': isim,
+                  });
+                  ckin=items.indexOf(selectedValue).toString();
+                }
+                catch (e) {
+                  message = 'Hata'+ e.toString();
+                }
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => ekran()),
+                );
+              }
+              else{
+              }
+            }
+            else {}
+          },
+      ),
       ),
     );
   }

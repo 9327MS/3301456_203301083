@@ -22,7 +22,9 @@ class _animasyonState extends State<animasyon> {
         .of(context)
         .size;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(centerTitle: true,
+        titleTextStyle: TextStyle(fontSize: 30, color: Colors.white,fontWeight: FontWeight.bold),
+        title: Text('BİTKİM')),
       backgroundColor: Colors.green,
       body: Center(
         child: Container(

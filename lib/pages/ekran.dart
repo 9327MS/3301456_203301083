@@ -27,7 +27,7 @@ class _ekranState extends State<ekran> with SingleTickerProviderStateMixin{
     super.initState();
     _controller =
         AnimationController(duration: Duration(seconds: 3),vsync: this);
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeOutCirc)..addListener(()=> this.setState ((){ }))
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.decelerate)..addListener(()=> this.setState ((){ }))
       ..addStatusListener((durum) {});
 
     _controller.forward();
