@@ -9,7 +9,7 @@ class reisim extends StatefulWidget {
   State<reisim> createState() => _reisimState();
 }
 List<String>
-ckism = ['Ametist','Papatya''Gül','Zambak','Lale','Nergis','Orkide','Barış'],
+ckism = ['Ametist','Papatya','Gül','Zambak','Lale','Nergis','Orkide','Barış'],
 ckresim =['assets/images/amtes.jpg','assets/images/papatya.png','assets/images/gul.jpg','assets/images/zambak.jpg','assets/images/lale.jpg','assets/images/nergis.jpg','assets/images/orkide.jpg','assets/images/baris.jpg'];
 class _reisimState extends State<reisim> {
   @override
