@@ -107,45 +107,46 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      IconButton(
-                          icon: Icon(Icons.bar_chart),
-                      iconSize: 40,
-                      color: buildTextColor(weatherList[0].status),
-                        tooltip: 'Grafik',
-                        onPressed: ()
-                        {
+                      Container(
+                        child: Row(
+                          children: [
+                            IconButton(
+                                icon: Icon(Icons.bar_chart),
+                            iconSize: 40,
+                            color: buildTextColor(weatherList[0].status),
+                              tooltip: 'Grafik',
+                              onPressed: ()
+                              {
 
-                          ilkgunmax =double.parse("${double.parse(weatherList[0].max).round()}");
-                          ilkgunmin =double.parse( "${double.parse(weatherList[0].min).round()}");
-                          ilkgunort=(ilkgunmax+ilkgunmin)/2;
-                          ilkgun=weatherList[0].day;
-                          ikigunmax =double.parse("${double.parse(weatherList[1].max).round()}");
-                          ikigunmin =double.parse( "${double.parse(weatherList[1].min).round()}");
-                          ikigunort=(ikigunmax+ikigunmin)/2;
-                          ikigun=weatherList[1].day;
-                          ucgunmax =double.parse("${double.parse(weatherList[2].max).round()}");
-                          ucgunmin =double.parse( "${double.parse(weatherList[2].min).round()}");
-                          ucgunort=(ucgunmax+ucgunmin)/2;
-                          ucgun=weatherList[2].day;
-                          dortgunmax =double.parse("${double.parse(weatherList[3].max).round()}");
-                          dortgunmin =double.parse( "${double.parse(weatherList[3].min).round()}");
-                          dortgunort=(dortgunmax+dortgunmin)/2;
-                          dortgun=weatherList[3].day;
-                          besgunmax =double.parse("${double.parse(weatherList[5].max).round()}");
-                          besgunmin =double.parse( "${double.parse(weatherList[5].min).round()}");
-                          besgunort=(besgunmax+besgunmin)/2;
-                          besgun=weatherList[4].day;
-                          altigunmax=double.parse("${double.parse(weatherList[6].max).round()}");
-                          altigunmin =double.parse( "${double.parse(weatherList[6].min).round()}");
-                          altigunort=(altigunmax+altigunmin)/2;
-                          altigun=weatherList[5].day;
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => BarChartSample3()));
-                        },
-                      ),
+                                ilkgunmax =double.parse("${double.parse(weatherList[0].max).round()}");
+                                ilkgunmin =double.parse( "${double.parse(weatherList[0].min).round()}");
+                                ilkgunort=(ilkgunmax+ilkgunmin)/2;
+                                ilkgun=weatherList[0].day;
+                                ikigunmax =double.parse("${double.parse(weatherList[1].max).round()}");
+                                ikigunmin =double.parse( "${double.parse(weatherList[1].min).round()}");
+                                ikigunort=(ikigunmax+ikigunmin)/2;
+                                ikigun=weatherList[1].day;
+                                ucgunmax =double.parse("${double.parse(weatherList[2].max).round()}");
+                                ucgunmin =double.parse( "${double.parse(weatherList[2].min).round()}");
+                                ucgunort=(ucgunmax+ucgunmin)/2;
+                                ucgun=weatherList[2].day;
+                                dortgunmax =double.parse("${double.parse(weatherList[3].max).round()}");
+                                dortgunmin =double.parse( "${double.parse(weatherList[3].min).round()}");
+                                dortgunort=(dortgunmax+dortgunmin)/2;
+                                dortgun=weatherList[3].day;
+                                besgunmax =double.parse("${double.parse(weatherList[5].max).round()}");
+                                besgunmin =double.parse( "${double.parse(weatherList[5].min).round()}");
+                                besgunort=(besgunmax+besgunmin)/2;
+                                besgun=weatherList[4].day;
+                                altigunmax=double.parse("${double.parse(weatherList[6].max).round()}");
+                                altigunmin =double.parse( "${double.parse(weatherList[6].min).round()}");
+                                altigunort=(altigunmax+altigunmin)/2;
+                                altigun=weatherList[5].day;
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => BarChartSample3()));
+                              },
+                            ),
+
                       Text(
                         'Haftalık grafik',
                         style: TextStyle(
@@ -154,16 +155,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: buildTextColor(weatherList[0].status),
                         ),
                       ),
+                      ]
+                     ),
+                      ),
                       Container(
                         width: 250,
+                        child: SingleChildScrollView(
                         child: Text(weatherList[0].description,textAlign: TextAlign.center,style:
                         TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.w300,
                             color: buildTextColor(weatherList[0].status),overflow: TextOverflow.clip ),softWrap: true),
                       ),
-                    ],
                   ),
+                  SizedBox(width: 100,)
                 ],
               ),
               const SizedBox(
